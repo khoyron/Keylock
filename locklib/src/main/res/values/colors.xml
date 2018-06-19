@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#EDC349</color>
+    <color name="colorPrimaryDark">#242B38</color>
+    <color name="colorPrimaryDark80">#CC242B38</color>
+    <color name="colorSecondary">#ffffff</color>
+    <color name="colorTertiary">#3B5998</color>
+
+    <color name="colorBlack">#222222</color>
+    <color name="colorBlack80">#CC000000</color>
+    <color name="colorGray">#4F555F</color>
+    <color name="colorGrayBlack">#333333</color>
+    <color name="colorLightGray">#AAAAAA</color>
+    <color name="colorLightGray1">#A0A0A0</color>
+
+    <color name="colorHintText">#CCCCCC</color>
+
+    <color name="colorApproved">#13BAC2</color>
+    <color name="colorRejected">#DA1A52</color>
+
+    <color name="actionbar_opacity">#33000000</color>
+
+    <color name="textPrimary">#f5f5f5</color>
+    <color name="textPrimaryDark">#95aab4</color>
+    <color name="errorText">#ff7878</color>
+</resources>

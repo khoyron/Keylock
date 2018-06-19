@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="android.actionsheet.demo.com.khoiron.locklib">
+
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+
+    <application>
+        <activity
+            android:name=".PinShow"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity android:name=".FingerPrintActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
+    </application>
+
+</manifest>
