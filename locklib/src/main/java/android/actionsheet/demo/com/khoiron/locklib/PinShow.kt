@@ -191,9 +191,7 @@ class PinShow : AppCompatActivity() {
                 image4.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.cycle2))
 
             }
-            else -> { // Note the block
-                print("x is neither 1 nor 2")
-            }
+
         }
 
         if (value.size == 4) {

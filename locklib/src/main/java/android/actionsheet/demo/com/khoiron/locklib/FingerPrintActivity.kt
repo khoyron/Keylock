@@ -30,13 +30,11 @@ import javax.crypto.SecretKey
 
 class FingerPrintActivity : BaseActivity() {
 
-
-
-    private var keyStore: KeyStore? = null
+    var keyStore: KeyStore? = null
     // Variable used for storing the key in the Android Keystore container
-    private val KEY_NAME = "androidHive"
-    private var cipher: Cipher? = null
-    private var textView: TextView? = null
+    val KEY_NAME = "androidHive"
+    var cipher: Cipher? = null
+    var textView: TextView? = null
     var notcancell = false
 
     val desc by lazy { findViewById(R.id.desc) as TextView }
