@@ -6,7 +6,7 @@
     <LinearLayout
         android:id="@+id/background"
         android:layout_margin="5dp"
-        android:background="@drawable/layout_bg"
+        android:background="@drawable/effect_clikc"
         android:layout_width="70dp"
         android:gravity="center"
         android:layout_height="70dp">

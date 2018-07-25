@@ -45,14 +45,18 @@ class AdapterRecycler(contextt: Context) : RecyclerView.Adapter<AdapterRecycler.
         if(modelNumber.number.isEmpty()){
             holder.background.visibility = View.INVISIBLE
         }
-        holder.background.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.layout_bg))
 
         holder.itemView.setOnClickListener {
-            if(holder.background.background == ContextCompat.getDrawable(context, R.drawable.layout_bg)){
-                holder.background.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.layout_bg1))
-                modelNumber.checked = true
+            /*if(holder.background.background == ContextCompat.getDrawable(context, R.drawable.layout_bg)){
+
             }else{
                 holder.background.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.layout_bg))
+            }*/
+
+            if(modelNumber.checked == true){
+                modelNumber.checked = false
+            }else{
+                modelNumber.checked = true
             }
             onclickListen.onclik(holder.itemView.id,position)
         }

@@ -12,6 +12,7 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
+import android.os.Handler
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
@@ -21,6 +22,9 @@ import android.view.View
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.pinlib.*
+import android.support.v4.content.ContextCompat.startActivity
+
+
 
 /**
  * Created by khoiron on 23/07/18.
@@ -96,9 +100,7 @@ class Pinlib :BaseActivity() {
 
                             Log.e("-> ", "Test ==== " + data)
                             firs = false
-                            tittle.setText("Please retry 4 digit Pin code")
-                            value.clear()
-                            txvalue.text = ""
+                            incorrect("Please retry 4 digit Pin code")
 
                         }else{
                             var dataa = ""
@@ -112,9 +114,7 @@ class Pinlib :BaseActivity() {
                                 setResult(Activity.RESULT_OK, returnIntent)
                                 finish()
                             }else{
-
-                                setToast("Code not same ")
-                                value.clear()
+                                incorrect("Code not same ")
 
                             }
                         }
@@ -130,9 +130,7 @@ class Pinlib :BaseActivity() {
                             setResult(Activity.RESULT_OK, returnIntent)
                             finish()
                         }else{
-                            setToast("Code not same ")
-                            value.clear()
-
+                            incorrect("Code not same ")
                         }
                     }
 
@@ -142,6 +140,14 @@ class Pinlib :BaseActivity() {
 
         getBackground()
 
+    }
+
+    fun incorrect(message :String){
+        Handler().postDelayed(Runnable {
+            txvalue.text = ""
+        }, 400)
+        setToast(message)
+        value.clear()
     }
 
     private fun getBackground() {
