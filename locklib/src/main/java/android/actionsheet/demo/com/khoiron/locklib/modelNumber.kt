@@ -7,4 +7,5 @@ class modelNumber {
     var number = ""
     var checked = false
     var line  = ""
+    var imgResource = 0
 }

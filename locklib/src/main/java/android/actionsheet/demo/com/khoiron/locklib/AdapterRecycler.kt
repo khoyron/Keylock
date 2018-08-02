@@ -4,9 +4,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.content.Context
-import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
+import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 
 
@@ -18,14 +19,11 @@ class AdapterRecycler(contextt: Context) : RecyclerView.Adapter<AdapterRecycler.
     var mutableList :MutableList<modelNumber> = ArrayList<modelNumber>()
     val context = contextt
 
-
     lateinit var onclickListen :onclickListener
 
     fun onclik(onclickListener: onclickListener){
         this.onclickListen = onclickListener
     }
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context)
@@ -44,6 +42,11 @@ class AdapterRecycler(contextt: Context) : RecyclerView.Adapter<AdapterRecycler.
         holder.number.setText(modelNumber.number)
         if(modelNumber.number.isEmpty()){
             holder.background.visibility = View.INVISIBLE
+        }
+
+        if (modelNumber.number=="10"){
+            holder.number.visibility = View.INVISIBLE
+            holder.img.setImageResource(R.drawable.delet)
         }
 
         holder.itemView.setOnClickListener {
@@ -65,10 +68,12 @@ class AdapterRecycler(contextt: Context) : RecyclerView.Adapter<AdapterRecycler.
 
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var number: TextView
-        var background: LinearLayout
+        var background: RelativeLayout
+        var img : ImageView
         init {
             number = view.findViewById(R.id.number) as TextView
-            background = view.findViewById(R.id.background) as LinearLayout
+            background = view.findViewById(R.id.background) as RelativeLayout
+            img = view.findViewById(R.id.img)
         }
     }
 

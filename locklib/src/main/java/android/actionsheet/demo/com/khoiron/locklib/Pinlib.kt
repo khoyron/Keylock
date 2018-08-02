@@ -1,6 +1,7 @@
 package android.actionsheet.demo.com.khoiron.locklib
 
 import android.actionsheet.demo.com.khoiron.locklib.Pinlib.pinValue.FIRST
+import android.actionsheet.demo.com.khoiron.locklib.Pinlib.pinValue.FORGOT
 import android.actionsheet.demo.com.khoiron.locklib.Pinlib.pinValue.NOTCANCELLED
 import android.actionsheet.demo.com.khoiron.locklib.Pinlib.pinValue.NOTFIRST
 import android.actionsheet.demo.com.khoiron.locklib.Pinlib.pinValue.PIN
@@ -22,9 +23,6 @@ import android.view.View
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.pinlib.*
-import android.support.v4.content.ContextCompat.startActivity
-
-
 
 /**
  * Created by khoiron on 23/07/18.
@@ -47,6 +45,15 @@ class Pinlib :BaseActivity() {
 
     override fun onMain(savedInstanceState: Bundle?) {
 
+        typePin()
+        setInitRecycler()
+        onClikRecycler()
+
+        getBackground()
+        forgotPassword.setOnClickListener { forgotListener() }
+    }
+
+    private fun typePin() {
         try {
             if (intent.getStringExtra(FIRST)!=null){
 
@@ -77,18 +84,30 @@ class Pinlib :BaseActivity() {
             e.printStackTrace()
         }
 
+    }
 
-        setInitRecycler()
+    private fun onClikRecycler() {
         adapterRecycler.onclik(object :AdapterRecycler.onclickListener{
             override fun onclik(view: Int, position: Int) {
                 if(view==-1){
-                    value.add(mutableList.get(position).number)
-                    var data = ""
-                    for(i in (0..value.size-1)){
-                        data = data+value.get(i)
+                    if (position==11){
+                        if (value.isNotEmpty()){
+                            value.removeAt(value.size-1)
+                            var data = ""
+                            for(i in (0..value.size-1)){
+                                data = data+value.get(i)
+                            }
+                            txvalue.text = data
+                        }
+                    }else{
+                        value.add(mutableList.get(position).number)
+                        var data = ""
+                        for(i in (0..value.size-1)){
+                            data = data+value.get(i)
+                        }
+                        txvalue.text = data
                     }
 
-                    txvalue.text = data
                 }
 
                 if (value.size == 4) {
@@ -97,8 +116,6 @@ class Pinlib :BaseActivity() {
                             for (i in 0..(value.size-1)){
                                 data = data+value.get(i)
                             }
-
-                            Log.e("-> ", "Test ==== " + data)
                             firs = false
                             incorrect("Please retry 4 digit Pin code")
 
@@ -124,13 +141,12 @@ class Pinlib :BaseActivity() {
                             dataa = dataa+value.get(i)
                         }
                         if (pin.equals(dataa)){
-
                             val returnIntent = Intent()
                             returnIntent.putExtra("result", dataa)
                             setResult(Activity.RESULT_OK, returnIntent)
                             finish()
                         }else{
-                            incorrect("Code not same ")
+                            incorrectPin("Your pin enter is invalid")
                         }
                     }
 
@@ -138,8 +154,13 @@ class Pinlib :BaseActivity() {
             }
         })
 
-        getBackground()
+    }
 
+    private fun forgotListener() {
+        val returnIntent = Intent()
+        returnIntent.putExtra("result", FORGOT)
+        setResult(Activity.RESULT_OK, returnIntent)
+        finish()
     }
 
     fun incorrect(message :String){
@@ -147,6 +168,14 @@ class Pinlib :BaseActivity() {
             txvalue.text = ""
         }, 400)
         setToast(message)
+        value.clear()
+    }
+
+    fun incorrectPin(message :String){
+        Handler().postDelayed(Runnable {
+            txvalue.text = ""
+        }, 400)
+        txError.setText(message)
         value.clear()
     }
 
@@ -183,7 +212,7 @@ class Pinlib :BaseActivity() {
         mutableList.add(modelNumber2)
 
         val modelNumber3 = modelNumber()
-        modelNumber3.number = ""
+        modelNumber3.number = "10"
         mutableList.add(modelNumber3)
 
         val mLayoutManager = GridLayoutManager(this, 3)
@@ -256,5 +285,6 @@ class Pinlib :BaseActivity() {
         var PIN = "PIN"
         var URL_IMAGE = ""
         var URL_IMG = ""
+        var FORGOT = "forgot"
     }
 }

@@ -17,6 +17,7 @@
 
     <color name="colorApproved">#13BAC2</color>
     <color name="colorRejected">#DA1A52</color>
+    <color name="colorRed">#ec5b5b</color>
 
     <color name="actionbar_opacity">#33000000</color>
 
