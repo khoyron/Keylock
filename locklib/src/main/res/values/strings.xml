@@ -4,4 +4,149 @@
     <string name="desc_fingerprint">Please place your fingertip on the scanner to verify your identity</string>
     <string name="note">(Fingerprint for every time you go into the application and when you will do cw point transactions. Your device should have at least one fingerprint registered in device settings)</string>
 
+
+    <!--Description-->
+    <string name="name">Ciputra World</string>
+    <string name="cwpoint_logo">CWPoint Logo</string>
+    <string name="go_to_settings">Settings</string>
+    <string name="go_to_notifications">Notification</string>
+    <string name="go_to_payment">Payment</string>
+    <string name="credit_card">Credit Card</string>
+    <string name="go_back">Back</string>
+    <string name="profile_picture">Profile picture</string>
+    <string name="thumbnail_payment">Payment</string>
+    <string name="item_payment_method">Item Payment Method</string>
+
+    <string name="default_notification_channel_id">Notification</string>
+
+    <!--Login value-->
+    <string name="textView_info">Anda bisa masuk dengan wavepoint account</string>
+    <string name="textView_username">Username</string>
+    <string name="hint_username">Masukkan username</string>
+    <string name="textView_password">Password *</string>
+    <string name="textView_password_retry">Ulangi Password *</string>
+    <string name="hint_password">Masukkan password *</string>
+    <string name="button_next">Next</string>
+    <string name="confirm_payment">CONFIRM PAYMENT</string>
+    <string name="textView_or">or</string>
+    <string name="button_facebook">Login With Facebook</string>
+    <string name="textView_not_registered">Not registered?</string>
+    <string name="textView_create_account"><u>Create Account</u></string>
+    <string name="struk_berhasil_dikirim">Struk anda sudah berhasil terkirim, memakan waktu 2 hari untuk konfirmasi dengan pihak CW.</string>
+    <string name="your_balance_is_not">Your balance is not enough</string>
+    <string name="your_balance_is_not_footer">Yes, I will pay the rest with cash</string>
+
+    <!--Register value-->
+    <string name="textView_fullname">Fullname *</string>
+    <string name="textView_email">Email *</string>
+    <string name="textView_mobile_number">Mobile Number </string>
+    <string name="textView_have_an_account"><u>I have an acoount </u></string>
+    <string name="text_forgot_password">Masukan email atau nomor ponsel yang \n terdaftar untuk memperbarui password anda.</string>
+
+    <!--Category value-->
+    <string name="textView_skip">Skip</string>
+    <string name="textView_title">Almost Done!</string>
+    <string name="textView_desc">We want to know you better, please choose\n this categories that suit you the best
+    </string>
+
+    <!--Reward value-->
+    <string name="congratulations">Congratulations</string>
+    <string name="top_text">Terima kasih telah membantu kami untuk\nmengetahui pribadi anda lebih dekat lagi.</string>
+    <string name="reward_value">100,000</string>
+    <string name="points">  POINTS</string>
+    <string name="your_balance_now">Your Balance now</string>
+    <string name="bottom_text">Dapatkan reward point lebih lagi saat anda\nmenyelesaikan detail-detail lainnya.</string>
+    <string name="bottom_text1">Struk anda sudah berhasil terkirim, memakan waktu 2 hari untuk konfirmasi dengan pihak CW.</string>
+    <string name="button_ok">OK</string>
+    <string name="tack_piture_again">Take picture again</string>
+    <string name="sukses">Payment Success</string>
+
+
+
+    <!--Payment value-->
+    <string name="sub_payment_1">Enter your card\ndetails</string>
+    <string name="sub_payment_2">Edit your card\ndetails</string>
+    <string name="sub_payment_3">Payment Success</string>
+    <string name="add_payment_method">Add Payment Method</string>
+    <string name="add_card">Add Card</string>
+    <string name="payment_info">Top up with this Bank credit or debit
+        </string>
+    <string name="payment_info2"> card and you will get </string>
+    <string name="payment_info3"> points extra</string>
+
+    <!--Payment List value-->
+    <string name="item_default">Default</string>
+
+
+    <!--Credit card-->
+    <string name="enter_any_data">Masukkan data yang anda punya</string>
+    <string name="credit_card_1">Visa 8979</string>
+    <string name="add_credit">Add New Credit Card</string>
+    <string name="confirmation_of_payment">Confirmation of Payment</string>
+    <string name="ccv">CCV</string>
+    <string name="tv_cc_1">You want to make payment for</string>
+    <string name="tv_cc_2">with payment method</string>
+    <string name="tv_cc_3">Total Amount to be paid</string>
+    <string name="tv_cc_4">10,000 points</string>
+    <string name="tv_cc_5">10,000</string>
+
+
+    <!--Manual code-->
+    <string name="payment_using_points">Payment using points</string>
+    <string name="manual_info">Nomer unik  terletak di bawah gambar QR CODE \n di kartu anda </string>
+    <string name="unique_id">Unique ID</string>
+
+
+
+    <!--Payment-->
+    <string name="payment">Payment</string>
+
+    <!--Confirmation 1-->
+    <string name="textView_1">There is a transaction from</string>
+    <string name="textView_shop">Metro Department Store</string>
+    <string name="textView_2">Your purchasing total amount is</string>
+    <string name="textView_price">Rp. 150,000.00</string>
+    <string name="textView_3">You will make a payment with your points</string>
+    <string name="textView_4">Minimum transaction is Rp. 20,000.00</string>
+    <string name="textView_5">Please make sure by clicking next means you agree \n to make payment  with your points.
+        \n There will be no refund.</string>
+    <string name="cancel">Cancel</string>
+
+    <!--Confirmation 2-->
+    <string name="confirmation">Confirmation</string>
+    <string name="confirm_paymet">Confirm Payment</string>
+    <string name="textView_6">Total amount to be paid</string>
+    <string name="textView_7">Payment using point</string>
+    <string name="textView_8">120,000.00</string>
+    <string name="textView_9">Total Amount to be paid in cash</string>
+    <string name="textView_10">Rp 30,000</string>
+    <string name="textView_11">Please make it sure by clicking next you are\n
+        agree to make payment with your points.\n
+         There will be no refund.</string>
+
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="notif_finger">Do you want to add a finger print</string>
+    <string name="title_activity_home">Fingerprint</string>
+    <string name="activity_home_desc">You have successfully logged in with fingerprint authentication</string>
+    <string name="activity_home_note">Close and re-open the app to see the fingerprint auth screen again</string>
+
+    <string name="failed_game">Dengan berpatisipasi sekarang anda \n akan mendapatkan chance sebanyak \n 1 kali untuk memenangkan undian \n Grand Prize. \n \n
+        Tidak hanya itu saja, Jika anda \n beruntung  barang yang anda beli \n akan mendapat diskon lebih dari 50%</string>
+
+    <string name="success_game">Kalau anda bermain lagi, chance untuk \n memenangkan kupon dengan discount \n lebih besar loh!</string>
+
+    <string name="your_card">Edit your card \n details</string>
+
+
+    <string name="how_to_play">How to play</string>
+    <string name="how_to_play_2_1">Saat anda di dalam permainan ini <b>Tap Spin</b> untuk menggerakkan roullete.</string>
+    <string name="how_to_play_2_2">Gambar pilihan akan berputar secara acak. Jangan khawatir karena anda pasti akan memenangkan hadiah.</string>
+    <string name="how_to_play_3_1">Setelah itu notifikasi anda memenangkan hadiah akan keluar seperti ini</string>
+    <string name="how_to_play_3_2">Anda telah berhasil mendapatkan</string>
+    <string name="how_to_play_3_3">Kalau anda bermain lagi, chance untuk memenangkan kupon dengan discount lebih besar loh!</string>
+    <string name="how_to_play_3_4">Anda akan mempunyai pilihan untuk bermain lagi dengan <b>tap MAIN LAGI</b> untuk memenangkan permainan yang lebih besar lagi, atau anda boleh memilih untuk selesai dan melanjutkan pembayaran anda</string>
+    <string name="how_to_play_3_buttton">MAIN LAGI DENGAN 5,000 POINTS</string>
+
+
 </resources>

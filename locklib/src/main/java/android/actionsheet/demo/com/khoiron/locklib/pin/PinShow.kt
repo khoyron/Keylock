@@ -1,11 +1,12 @@
-package android.actionsheet.demo.com.khoiron.locklib
+package android.actionsheet.demo.com.khoiron.locklib.pin
 
-import android.actionsheet.demo.com.khoiron.locklib.PinShow.pinValue.FIRST
-import android.actionsheet.demo.com.khoiron.locklib.PinShow.pinValue.NOTCANCELLED
-import android.actionsheet.demo.com.khoiron.locklib.PinShow.pinValue.NOTFIRST
-import android.actionsheet.demo.com.khoiron.locklib.PinShow.pinValue.PIN
-import android.actionsheet.demo.com.khoiron.locklib.PinShow.pinValue.data
-import android.actionsheet.demo.com.khoiron.locklib.PinShow.pinValue.firs
+import android.actionsheet.demo.com.khoiron.locklib.R
+import android.actionsheet.demo.com.khoiron.locklib.pin.PinShow.pinValue.FIRST
+import android.actionsheet.demo.com.khoiron.locklib.pin.PinShow.pinValue.NOTCANCELLED
+import android.actionsheet.demo.com.khoiron.locklib.pin.PinShow.pinValue.NOTFIRST
+import android.actionsheet.demo.com.khoiron.locklib.pin.PinShow.pinValue.PIN
+import android.actionsheet.demo.com.khoiron.locklib.pin.PinShow.pinValue.data
+import android.actionsheet.demo.com.khoiron.locklib.pin.PinShow.pinValue.firs
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -27,7 +28,7 @@ class PinShow : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pin_show)
 
-        //handleINtent
+        //handleIntent
         try {
             if (intent.getStringExtra(FIRST)!=null){
                 if (FIRST.equals(intent.getStringExtra(FIRST))) {
@@ -127,14 +128,17 @@ class PinShow : AppCompatActivity() {
             }
         }
         b0.setOnClickListener {
+
             if (value.size > 4){
 
             }else{
                 value.add("0")
                 drawImage()
             }
+
         }
         bx.setOnClickListener {
+
             if (value.size > 4){
 
             }else{
@@ -143,6 +147,7 @@ class PinShow : AppCompatActivity() {
                     drawImage()
                 }
             }
+
         }
     }
 

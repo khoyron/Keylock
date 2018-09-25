@@ -7,12 +7,18 @@
 
     <application>
         <activity
-            android:name=".PinShow"
+            android:name=".pin.PinShow"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-        <activity android:name=".FingerPrintActivity"
+        <activity android:name=".fingerpint.FingerPrintActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
         <activity
-            android:name=".Pinlib"
+            android:name=".pin.Pinlib"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".pin.PinOtp"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".slide.ActivitySlider"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
     </application>
 

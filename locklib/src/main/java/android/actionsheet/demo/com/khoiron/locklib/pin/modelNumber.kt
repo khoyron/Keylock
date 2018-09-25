@@ -1,4 +1,4 @@
-package android.actionsheet.demo.com.khoiron.locklib
+package android.actionsheet.demo.com.khoiron.locklib.pin
 
 /**
  * Created by khoiron on 23/07/18.

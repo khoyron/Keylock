@@ -1,6 +1,7 @@
-package android.actionsheet.demo.com.khoiron.locklib
+package android.actionsheet.demo.com.khoiron.locklib.fingerpint
 
 import android.Manifest
+import android.actionsheet.demo.com.khoiron.locklib.R
 import android.app.Activity
 import android.content.Context
 import android.content.Intent

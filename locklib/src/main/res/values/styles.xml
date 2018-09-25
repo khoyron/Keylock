@@ -1,0 +1,62 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+    </style>
+
+    <!--Custom Font-->
+    <style name="AvenirBlack" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/avenir_black</item>
+    </style>
+    <style name="AvenirBlackOblique" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/avenir_black_oblique</item>
+    </style>
+    <style name="AvenirBook" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/avenir_book</item>
+    </style>
+    <style name="AvenirBookOblique" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/avenir_book_oblique</item>
+    </style>
+    <style name="AvenirHeavy" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/avenir_heavy</item>
+    </style>
+    <style name="AvenirHeavyOblique" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/avenir_heavy_oblique</item>
+    </style>
+    <style name="AvenirLight" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/avenir_light</item>
+    </style>
+    <style name="AvenirLightOblique" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/avenir_light_oblique</item>
+    </style>
+    <style name="AvenirMedium" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/avenir_medium</item>
+    </style>
+    <style name="AvenirMediumOblique" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/avenir_medium_oblique</item>
+    </style>
+    <style name="AvenirOblique" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/avenir_oblique</item>
+    </style>
+    <style name="AvenirRoman" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/avenir_roman</item>
+    </style>
+
+    <style name="TransparentToolbar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:windowActionBarOverlay">true</item>
+        <!-- Support Library compability -->
+        <item name="windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="AppOverlayTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+</resources>

@@ -1,7 +1,7 @@
 package android.actionsheet.demo.com.khoiron.lockapp
 
-import android.actionsheet.demo.com.khoiron.locklib.FingerPrintActivity
-import android.actionsheet.demo.com.khoiron.locklib.Pinlib
+import android.actionsheet.demo.com.khoiron.locklib.pin.PinOtp
+import android.actionsheet.demo.com.khoiron.locklib.slide.ActivitySlider
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -21,16 +21,23 @@ class MainActivity : AppCompatActivity() {
 
 //            startActivity(Intent(this,Pinlib::class.java))
 //            for fingger
-//            var intent = Intent(this,FingerPrintActivity::class.java)
+//            var intent j= Intent(this,FingerPrintActivity::class.java)
 //            intent.putExtra(FingerPrintActivity.contant.FIRST,FingerPrintActivity.contant.NOTCANCELLED)
 //            startActivityForResult(intent,FingerPrintActivity.contant.FINGER)
 //            for pin
 
-            var int = Intent(this, Pinlib::class.java)
-            int.putExtra(Pinlib.pinValue.NOTFIRST,Pinlib.pinValue.NOTCANCELLED)
-            int.putExtra(Pinlib.pinValue.PIN,"1234")
-            int.putExtra(Pinlib.pinValue.URL_IMAGE,"http://206.189.88.9/assets/img/media/background.png")
-            startActivityForResult(int,Pinlib.pinValue.PINSHOW)
+            startActivity(Intent(this,ActivitySlider::class.java))
+
+            /*var int = Intent(this, PinOtp::class.java)
+            int.putExtra(PinOtp.pinValue.NOTFIRST, PinOtp.pinValue.NOTCANCELLED)
+            int.putExtra(PinOtp.pinValue.PIN,"1234")
+            int.putExtra(PinOtp.pinValue.NO_PHONE,"0858455609")
+            int.putExtra(PinOtp.pinValue.CODE,"5267")
+            int.putExtra(PinOtp.pinValue.TITLE,"Kami telah mengirimkan kode ke \n" +
+                    "081 1234 1234")
+            int.putExtra(PinOtp.pinValue.URL_IMAGE,"http://13.251.205.142/assets/img/media/background.png")
+            startActivityForResult(int, PinOtp.pinValue.PINSHOW)*/
+
         }
 
     }
@@ -39,11 +46,7 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode==11){
             if (resultCode == Activity.RESULT_OK) {
-                if(Pinlib.pinValue.FORGOT.equals(data?.getStringExtra("result"))){
-
-                }else{
-
-                }
+               setLog(data?.getStringExtra("result")+" ")
             }
         }else if(requestCode==20){
             if (resultCode == Activity.RESULT_OK) {

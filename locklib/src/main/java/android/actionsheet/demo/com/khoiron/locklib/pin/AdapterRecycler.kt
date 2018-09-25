@@ -1,12 +1,12 @@
-package android.actionsheet.demo.com.khoiron.locklib
+package android.actionsheet.demo.com.khoiron.locklib.pin
 
+import android.actionsheet.demo.com.khoiron.locklib.R
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.content.Context
 import android.view.LayoutInflater
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 
@@ -19,7 +19,7 @@ class AdapterRecycler(contextt: Context) : RecyclerView.Adapter<AdapterRecycler.
     var mutableList :MutableList<modelNumber> = ArrayList<modelNumber>()
     val context = contextt
 
-    lateinit var onclickListen :onclickListener
+    lateinit var onclickListen : onclickListener
 
     fun onclik(onclickListener: onclickListener){
         this.onclickListen = onclickListener

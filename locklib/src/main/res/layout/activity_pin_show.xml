@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#263237"
     android:orientation="vertical"
-    tools:context="android.actionsheet.demo.com.khoiron.locklib.PinShow">
+    tools:context="android.actionsheet.demo.com.khoiron.locklib.pin.PinShow">
 
     <LinearLayout
         android:layout_marginTop="40dp"

@@ -1,14 +1,19 @@
-package android.actionsheet.demo.com.khoiron.locklib
+package android.actionsheet.demo.com.khoiron.locklib.pin
 
-import android.actionsheet.demo.com.khoiron.locklib.Pinlib.pinValue.FIRST
-import android.actionsheet.demo.com.khoiron.locklib.Pinlib.pinValue.FORGOT
-import android.actionsheet.demo.com.khoiron.locklib.Pinlib.pinValue.NOTCANCELLED
-import android.actionsheet.demo.com.khoiron.locklib.Pinlib.pinValue.NOTFIRST
-import android.actionsheet.demo.com.khoiron.locklib.Pinlib.pinValue.PIN
-import android.actionsheet.demo.com.khoiron.locklib.Pinlib.pinValue.URL_IMAGE
-import android.actionsheet.demo.com.khoiron.locklib.Pinlib.pinValue.URL_IMG
-import android.actionsheet.demo.com.khoiron.locklib.Pinlib.pinValue.data
-import android.actionsheet.demo.com.khoiron.locklib.Pinlib.pinValue.firs
+import android.actionsheet.demo.com.khoiron.locklib.R
+import android.actionsheet.demo.com.khoiron.locklib.pin.PinOtp.pinValue.CODE
+import android.actionsheet.demo.com.khoiron.locklib.pin.PinOtp.pinValue.TITLE
+import android.actionsheet.demo.com.khoiron.locklib.pin.PinOtp.pinValue.FIRST
+import android.actionsheet.demo.com.khoiron.locklib.pin.PinOtp.pinValue.FORGOT
+import android.actionsheet.demo.com.khoiron.locklib.pin.PinOtp.pinValue.NOTCANCELLED
+import android.actionsheet.demo.com.khoiron.locklib.pin.PinOtp.pinValue.NOTFIRST
+import android.actionsheet.demo.com.khoiron.locklib.pin.PinOtp.pinValue.NO_PHONE
+import android.actionsheet.demo.com.khoiron.locklib.pin.PinOtp.pinValue.PIN
+import android.actionsheet.demo.com.khoiron.locklib.pin.PinOtp.pinValue.URL_IMAGE
+import android.actionsheet.demo.com.khoiron.locklib.pin.PinOtp.pinValue.URL_IMG
+import android.actionsheet.demo.com.khoiron.locklib.pin.PinOtp.pinValue.data
+import android.actionsheet.demo.com.khoiron.locklib.pin.PinOtp.pinValue.firs
+import android.actionsheet.demo.com.khoiron.locklib.base.BaseActivity
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Rect
@@ -22,13 +27,18 @@ import android.util.TypedValue
 import android.view.View
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.pinlib.*
+import com.unicode.kingmarket.Utility.NetworkRepo.ApiUrl
+import kotlinx.android.synthetic.main.pin_otp.*
+import okhttp3.ResponseBody
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Response
 
 /**
  * Created by khoiron on 23/07/18.
  */
 
-class Pinlib :BaseActivity() {
+class PinOtp : BaseActivity() {
 
     var notcancell = false
     var insert = false
@@ -38,9 +48,11 @@ class Pinlib :BaseActivity() {
     val adapterRecycler by lazy { AdapterRecycler(this) }
     var mutableList :MutableList<modelNumber> = ArrayList<modelNumber>()
     var value :MutableList<String> = ArrayList<String>()
+    var code :String = ""
+    var nophone : String = ""
 
     override fun getLayout(): Int {
-        return R.layout.pinlib
+        return R.layout.pin_otp
     }
 
     override fun onMain(savedInstanceState: Bundle?) {
@@ -78,16 +90,26 @@ class Pinlib :BaseActivity() {
                 Log.e("LOG",intent.getStringExtra(URL_IMAGE))
                 URL_IMG = ""
                 URL_IMG = intent.getStringExtra(URL_IMAGE)
-            }
+                var title = intent.getStringExtra(TITLE);
+                tittle.setText(title)
 
+                nophone = intent.getStringExtra(NO_PHONE)
+                code = intent.getStringExtra(CODE)
+
+            }
+            btnTittle.setOnClickListener {
+                firs = true
+                data = ""
+                setResult(Activity.RESULT_CANCELED)
+                finish()
+            }
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
     }
 
     private fun onClikRecycler() {
-        adapterRecycler.onclik(object :AdapterRecycler.onclickListener{
+        adapterRecycler.onclik(object : AdapterRecycler.onclickListener {
             override fun onclik(view: Int, position: Int) {
                 if(view==-1){
                     if (position==11){
@@ -107,7 +129,6 @@ class Pinlib :BaseActivity() {
                         }
                         txvalue.text = data
                     }
-
                 }
 
                 if (value.size == 4) {
@@ -124,33 +145,54 @@ class Pinlib :BaseActivity() {
                             for (i in 0..(value.size-1)){
                                 dataa = dataa+value.get(i)
                             }
-                            if (data.equals(dataa)){
-
-                                val returnIntent = Intent()
-                                returnIntent.putExtra("result", dataa)
-                                setResult(Activity.RESULT_OK, returnIntent)
-                                finish()
-                            }else{
-                                incorrect("Code not same ")
-
-                            }
+                            val returnIntent = Intent()
+                            returnIntent.putExtra("result", dataa)
+                            setResult(Activity.RESULT_OK, returnIntent)
+                            finish()
                         }
                     }else{
                         var dataa = ""
                         for (i in 0..(value.size-1)){
                             dataa = dataa+value.get(i)
                         }
-                        if (pin.equals(dataa)){
+
+                        getFerivication(dataa)
+                        /*if (pin.equals(dataa)){
                             val returnIntent = Intent()
                             returnIntent.putExtra("result", dataa)
                             setResult(Activity.RESULT_OK, returnIntent)
                             finish()
                         }else{
-                            incorrectPin("Your pin enter is invalid")
-                        }
+                            incorrectPin("Your code is invalid please check again")
+                        }*/
+                    }
+                }
+            }
+        })
+    }
+
+    var client = ApiUrl.getData()
+
+    private fun getFerivication(dataa: String) {
+
+        client.getVeriviCode(code,nophone).enqueue(object : retrofit2.Callback<ResponseBody>{
+            override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
+                if(response?.code()==200){
+                    var json = JSONObject(response.body()?.string())
+                    if ("success".equals(json.optString("status"))){
+                        val returnIntent = Intent()
+                        returnIntent.putExtra("result", dataa)
+                        setResult(Activity.RESULT_OK, returnIntent)
+                        finish()
+                    }else{
+                        setToast(json.optString("message"))
                     }
 
                 }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+
             }
         })
 
@@ -277,14 +319,16 @@ class Pinlib :BaseActivity() {
     object pinValue{
         var firs = true
         var data = ""
-
+        var TITLE = "tittle"
+        var PIN = "PIN"
         var FIRST = "first"
         var NOTFIRST = "notfirst"
         var NOTCANCELLED = "notcancell"
         var PINSHOW = 11
-        var PIN = "PIN"
         var URL_IMAGE = ""
         var URL_IMG = ""
         var FORGOT = "forgot"
+        var NO_PHONE = "phone"
+        var CODE = "code"
     }
 }

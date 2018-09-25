@@ -1,9 +1,11 @@
-package android.actionsheet.demo.com.khoiron.locklib
+package android.actionsheet.demo.com.khoiron.locklib.fingerpint
 
 import android.Manifest
-import android.actionsheet.demo.com.khoiron.locklib.FingerPrintActivity.contant.FIRST
-import android.actionsheet.demo.com.khoiron.locklib.FingerPrintActivity.contant.NOTCANCELLED
-import android.actionsheet.demo.com.khoiron.locklib.FingerPrintActivity.contant.NOTFIRST
+import android.actionsheet.demo.com.khoiron.locklib.R
+import android.actionsheet.demo.com.khoiron.locklib.fingerpint.FingerPrintActivity.contant.FIRST
+import android.actionsheet.demo.com.khoiron.locklib.fingerpint.FingerPrintActivity.contant.NOTCANCELLED
+import android.actionsheet.demo.com.khoiron.locklib.fingerpint.FingerPrintActivity.contant.NOTFIRST
+import android.actionsheet.demo.com.khoiron.locklib.base.BaseActivity
 import android.annotation.TargetApi
 import android.app.Activity
 import android.app.KeyguardManager
@@ -108,7 +110,7 @@ class FingerPrintActivity : BaseActivity() {
 
                         if (cipherInit()) {
                             val cryptoObject = FingerprintManager.CryptoObject(cipher!!)
-                            val helper = FingerprintHandler(this,insert)
+                            val helper = FingerprintHandler(this, insert)
                             helper.startAuth(fingerprintManager, cryptoObject)
                         }
                     }
