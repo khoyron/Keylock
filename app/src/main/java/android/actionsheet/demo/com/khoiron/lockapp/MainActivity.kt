@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
 //            startActivityForResult(intent,FingerPrintActivity.contant.FINGER)
 //            for pin
 
-            startActivity(Intent(this,ActivitySlider::class.java))
+//            startActivity(Intent(this,ActivitySlider::class.java))
 
-            /*var int = Intent(this, PinOtp::class.java)
+            var int = Intent(this, PinOtp::class.java)
             int.putExtra(PinOtp.pinValue.NOTFIRST, PinOtp.pinValue.NOTCANCELLED)
             int.putExtra(PinOtp.pinValue.PIN,"1234")
             int.putExtra(PinOtp.pinValue.NO_PHONE,"0858455609")
@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             int.putExtra(PinOtp.pinValue.TITLE,"Kami telah mengirimkan kode ke \n" +
                     "081 1234 1234")
             int.putExtra(PinOtp.pinValue.URL_IMAGE,"http://13.251.205.142/assets/img/media/background.png")
-            startActivityForResult(int, PinOtp.pinValue.PINSHOW)*/
+            startActivityForResult(int, PinOtp.pinValue.PINSHOW)
 
         }
 

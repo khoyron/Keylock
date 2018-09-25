@@ -9,9 +9,7 @@ import retrofit2.http.*
  */
 interface URLunicode {
 
-    /*@FormUrlEncoded
-    @POST("password/forget")
-    abstract fun getVeriviCode(@Field("value") version: String): Call<ResponseBody>*/
+    @FormUrlEncoded
     @POST("password/send-code")
     abstract fun getVeriviCode(@Field("code") code: String,
                                @Field("value") value: String): Call<ResponseBody>

@@ -178,16 +178,28 @@ class PinOtp : BaseActivity() {
         client.getVeriviCode(code,nophone).enqueue(object : retrofit2.Callback<ResponseBody>{
             override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
                 if(response?.code()==200){
-                    var json = JSONObject(response.body()?.string())
-                    if ("success".equals(json.optString("status"))){
-                        val returnIntent = Intent()
-                        returnIntent.putExtra("result", dataa)
-                        setResult(Activity.RESULT_OK, returnIntent)
-                        finish()
-                    }else{
-                        setToast(json.optString("message"))
+
+                    try {
+                        var json = JSONObject(response.body()?.string())
+                        if ("success".equals(json.optString("status"))){
+                            val returnIntent = Intent()
+                            returnIntent.putExtra("result", dataa)
+                            setResult(Activity.RESULT_OK, returnIntent)
+                            finish()
+                        }else{
+                            incorrectPin(json.optString("message"))
+                        }
+                    }catch (e:Exception){
+                        e.printStackTrace()
                     }
 
+                }else{
+                    try {
+                        var json = JSONObject(response?.errorBody()?.string())
+                        incorrectPin(json.optString("message"))
+                    }catch (e:Exception){
+                        e.printStackTrace()
+                    }
                 }
             }
 
