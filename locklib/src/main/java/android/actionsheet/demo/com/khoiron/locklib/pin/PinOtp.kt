@@ -157,6 +157,7 @@ class PinOtp : BaseActivity() {
                         }
 
                         getFerivication(dataa)
+
                         /*if (pin.equals(dataa)){
                             val returnIntent = Intent()
                             returnIntent.putExtra("result", dataa)
@@ -165,6 +166,7 @@ class PinOtp : BaseActivity() {
                         }else{
                             incorrectPin("Your code is invalid please check again")
                         }*/
+
                     }
                 }
             }
@@ -174,7 +176,7 @@ class PinOtp : BaseActivity() {
     var client = ApiUrl.getData()
 
     private fun getFerivication(dataa: String) {
-
+        code = dataa;
         client.getVeriviCode(code,nophone).enqueue(object : retrofit2.Callback<ResponseBody>{
             override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
                 if(response?.code()==200){
@@ -186,9 +188,10 @@ class PinOtp : BaseActivity() {
                             returnIntent.putExtra("result", dataa)
                             setResult(Activity.RESULT_OK, returnIntent)
                             finish()
-                        }else{
+                        } else{
                             incorrectPin(json.optString("message"))
                         }
+
                     }catch (e:Exception){
                         e.printStackTrace()
                     }
