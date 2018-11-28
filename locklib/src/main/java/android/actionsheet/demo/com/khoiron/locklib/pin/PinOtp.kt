@@ -94,6 +94,7 @@ class PinOtp : BaseActivity() {
                 tittle.setText(title)
 
                 nophone = intent.getStringExtra(NO_PHONE)
+
                 code = intent.getStringExtra(CODE)
 
             }

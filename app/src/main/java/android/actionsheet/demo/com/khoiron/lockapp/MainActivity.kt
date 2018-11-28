@@ -1,6 +1,7 @@
 package android.actionsheet.demo.com.khoiron.lockapp
 
 import android.actionsheet.demo.com.khoiron.locklib.pin.PinOtp
+import android.actionsheet.demo.com.khoiron.locklib.pin.Pinlib
 import android.actionsheet.demo.com.khoiron.locklib.slide.ActivitySlider
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -28,15 +29,25 @@ class MainActivity : AppCompatActivity() {
 
 //            startActivity(Intent(this,ActivitySlider::class.java))
 
-            var int = Intent(this, PinOtp::class.java)
+            /*var int = Intent(this, PinOtp::class.java)
             int.putExtra(PinOtp.pinValue.NOTFIRST, PinOtp.pinValue.NOTCANCELLED)
             int.putExtra(PinOtp.pinValue.PIN,"1234")
             int.putExtra(PinOtp.pinValue.NO_PHONE,"0858455609")
             int.putExtra(PinOtp.pinValue.CODE,"5267")
-            int.putExtra(PinOtp.pinValue.TITLE,"Kami telah mengirimkan kode ke \n" +
+            int.putExtra(PinOtp.pinValue.TITLE,"Kami telah mengirimkan kode ke \n " +
                     "081 1234 1234")
             int.putExtra(PinOtp.pinValue.URL_IMAGE,"http://13.251.205.142/assets/img/media/background.png")
             startActivityForResult(int, PinOtp.pinValue.PINSHOW)
+            */
+
+
+            var int = Intent(this, Pinlib::class.java)
+            int.putExtra(Pinlib.pinValue.NOTFIRST, PinOtp.pinValue.NOTCANCELLED)
+            int.putExtra(Pinlib.pinValue.PIN,"1234")
+            int.putExtra(Pinlib.pinValue.URL_IMAGE,"http://13.251.205.142/assets/img/media/background.png")
+            startActivityForResult(int, PinOtp.pinValue.PINSHOW)
+
+
 
         }
 
@@ -60,7 +71,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setLog(string: String) {
-        Log.e("--","-->"+string)
+        Log.e("--",string)
     }
 
     private fun setToast(string: String) {

@@ -128,7 +128,6 @@ class Pinlib : BaseActivity() {
                                 dataa = dataa+value.get(i)
                             }
                             if (data.equals(dataa)){
-
                                 val returnIntent = Intent()
                                 returnIntent.putExtra("result", dataa)
                                 setResult(Activity.RESULT_OK, returnIntent)
@@ -143,10 +142,25 @@ class Pinlib : BaseActivity() {
                         for (i in 0..(value.size-1)){
                             dataa = dataa+value.get(i)
                         }
+                        if (pin.equals(dataa)){
+                            val returnIntent = Intent()
+                            returnIntent.putExtra("result", dataa)
+                            setResult(Activity.RESULT_OK, returnIntent)
+                            finish()
+                        }else{
+                            incorrect("Code not same ")
+
+                        }
+
+                        /*setLog("benar")
+                        var dataa = ""
+                        for (i in 0..(value.size-1)){
+                            dataa = dataa+value.get(i)
+                        }
                         val returnIntent = Intent()
                         returnIntent.putExtra("result", dataa)
                         setResult(Activity.RESULT_OK, returnIntent)
-                        finish()
+                        finish()*/
                     }
 
                 }
