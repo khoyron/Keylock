@@ -6,16 +6,13 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application>
-        <activity
-            android:name=".pin.PinShow"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity android:name=".fingerpint.FingerPrintActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
         <activity
-            android:name=".pin.Pinlib"
+            android:name=".pin.pinlib.Pinlib"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".pin.PinOtp"
+            android:name=".pin.pinotp.PinOtp"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".slide.ActivitySlider"

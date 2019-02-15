@@ -2,10 +2,9 @@ package android.actionsheet.demo.com.khoiron.locklib.fingerpint
 
 import android.Manifest
 import android.actionsheet.demo.com.khoiron.locklib.R
+import android.actionsheet.demo.com.khoiron.locklib.base.BaseActivity
 import android.actionsheet.demo.com.khoiron.locklib.fingerpint.FingerPrintActivity.contant.FIRST
 import android.actionsheet.demo.com.khoiron.locklib.fingerpint.FingerPrintActivity.contant.NOTCANCELLED
-import android.actionsheet.demo.com.khoiron.locklib.fingerpint.FingerPrintActivity.contant.NOTFIRST
-import android.actionsheet.demo.com.khoiron.locklib.base.BaseActivity
 import android.annotation.TargetApi
 import android.app.Activity
 import android.app.KeyguardManager
@@ -55,18 +54,25 @@ class FingerPrintActivity : BaseActivity() {
         textView = findViewById(R.id.errorText)
 
         try {
-            if (intent.getStringExtra(FIRST)!=null){
-                if (FIRST.equals(intent.getStringExtra(FIRST))) {
-                    insert = true
-                    tittle_finger.setText("Please Insert Finggerprint");
-                }else if(NOTCANCELLED.equals(intent.getStringExtra(FIRST))){
-                    notcancell = true
-                    insert = true
-                    tittle_finger.setText("Please Insert Finggerprint");
+            if (intent.getBooleanExtra(FIRST,false)!=null){
+                if (intent.getBooleanExtra(FIRST,false)) {
+                    if(intent.getBooleanExtra(NOTCANCELLED,false)){
+                        notcancell = true
+                        insert = true
+                        tittle_finger.setText("Please Insert Finggerprint");
+                    }
+                    else{
+                        insert = true
+                        tittle_finger.setText("Please Insert Finggerprint");
+                    }
                 }
-            }else if (intent.getStringExtra(NOTFIRST)!= null){
-                if (NOTCANCELLED.equals(intent.getStringExtra(NOTFIRST))) {
-                    notcancell = true
+                else{
+                    if (intent.getBooleanExtra(NOTCANCELLED,false)) {
+                        notcancell = true
+                    }
+                    else{
+                        notcancell = false
+                    }
                 }
             }
             /*val first = intent.getStringExtra("first")
@@ -82,14 +88,7 @@ class FingerPrintActivity : BaseActivity() {
 
         // Check whether the device has a Fingerprint sensor.
         if (!fingerprintManager.isHardwareDetected) {
-            /**
-             * An error message will be displayed if the device does not contain the fingerprint hardware.
-             * However if you plan to implement a default authentication method,
-             * you can redirect the user to a default authentication activity from here.
-             * Example:
-             * Intent intent = new Intent(this, DefaultAuthenticationActivity.class);
-             * startActivity(intent);
-             */
+
             textView!!.text = "Your Device does not have a Fingerprint Sensor"
         } else {
             // Checks whether fingerprint permission is set on manifest
@@ -198,10 +197,9 @@ class FingerPrintActivity : BaseActivity() {
     }
 
     object contant{
-        var FIRST = "first"
-        var NOTFIRST = "notfirst"
-        var NOTCANCELLED = "notcancell"
-        var FINGER = 20
+        var FIRST = "firs"
+        var NOTCANCELLED = "cancel"
+        var FINGER = 200
     }
 
     override fun onBackPressed() {

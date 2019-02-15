@@ -1,16 +1,17 @@
-package android.actionsheet.demo.com.khoiron.locklib.pin
+package android.actionsheet.demo.com.khoiron.locklib.pin.pinlib
 
 import android.actionsheet.demo.com.khoiron.locklib.R
-import android.actionsheet.demo.com.khoiron.locklib.pin.Pinlib.pinValue.FIRST
-import android.actionsheet.demo.com.khoiron.locklib.pin.Pinlib.pinValue.FORGOT
-import android.actionsheet.demo.com.khoiron.locklib.pin.Pinlib.pinValue.NOTCANCELLED
-import android.actionsheet.demo.com.khoiron.locklib.pin.Pinlib.pinValue.NOTFIRST
-import android.actionsheet.demo.com.khoiron.locklib.pin.Pinlib.pinValue.PIN
-import android.actionsheet.demo.com.khoiron.locklib.pin.Pinlib.pinValue.URL_IMAGE
-import android.actionsheet.demo.com.khoiron.locklib.pin.Pinlib.pinValue.URL_IMG
-import android.actionsheet.demo.com.khoiron.locklib.pin.Pinlib.pinValue.data
-import android.actionsheet.demo.com.khoiron.locklib.pin.Pinlib.pinValue.firs
+import android.actionsheet.demo.com.khoiron.locklib.pin.pinlib.Pinlib.mData.FIRST
+import android.actionsheet.demo.com.khoiron.locklib.pin.pinlib.Pinlib.mData.FORGOT
+import android.actionsheet.demo.com.khoiron.locklib.pin.pinlib.Pinlib.mData.NOTCANCELLED
+import android.actionsheet.demo.com.khoiron.locklib.pin.pinlib.Pinlib.mData.PIN
+import android.actionsheet.demo.com.khoiron.locklib.pin.pinlib.Pinlib.mData.URL_IMAGE
+import android.actionsheet.demo.com.khoiron.locklib.pin.pinlib.Pinlib.mData.URL_IMG
+import android.actionsheet.demo.com.khoiron.locklib.pin.pinlib.Pinlib.mData.data
+import android.actionsheet.demo.com.khoiron.locklib.pin.pinlib.Pinlib.mData.firs
 import android.actionsheet.demo.com.khoiron.locklib.base.BaseActivity
+import android.actionsheet.demo.com.khoiron.locklib.pin.AdapterRecycler
+import android.actionsheet.demo.com.khoiron.locklib.pin.modelNumber
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Rect
@@ -24,7 +25,8 @@ import android.util.TypedValue
 import android.view.View
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.pinlib.*
+import kotlinx.android.synthetic.main.pinlib_layout.*
+import java.util.*
 
 /**
  * Created by khoiron on 23/07/18.
@@ -42,7 +44,7 @@ class Pinlib : BaseActivity() {
     var value :MutableList<String> = ArrayList<String>()
 
     override fun getLayout(): Int {
-        return R.layout.pinlib
+        return R.layout.pinlib_layout
     }
 
     override fun onMain(savedInstanceState: Bundle?) {
@@ -57,32 +59,32 @@ class Pinlib : BaseActivity() {
 
     private fun typePin() {
         try {
-            if (intent.getStringExtra(FIRST)!=null){
 
-                if (FIRST.equals(intent.getStringExtra(FIRST))) {
-                    insert = true
-                    tittle.setText("Set 4 digit Pin code")
-                }else if(NOTCANCELLED.equals(intent.getStringExtra(FIRST))){
-                    notcancell = true
-                    insert = true
-                }
-                Log.e("LOG",intent.getStringExtra(URL_IMAGE))
-                URL_IMG = ""
-                URL_IMG = intent.getStringExtra(URL_IMAGE)
+            tittle.setText("Set 4 digit Pin code")
+            URL_IMG = intent.getStringExtra(URL_IMAGE)
 
-            }else if (intent.getStringExtra(NOTFIRST)!= null){
-                if (NOTCANCELLED.equals(intent.getStringExtra(NOTFIRST))) {
-                    notcancell = true
-                }
-                if (intent.getStringExtra(PIN)!=null){
-                    pin = intent.getStringExtra(PIN)
+            if (intent.getBooleanExtra(FIRST,false)!=null){
 
+                if (intent.getBooleanExtra(FIRST,false)) {
+                    setLog("----- >")
+                    if(intent.getBooleanExtra(NOTCANCELLED,false)){
+                        notcancell = true
+                        insert = true
+                    }else{
+                        insert = true
+                    }
                 }
-                Log.e("LOG",intent.getStringExtra(URL_IMAGE))
-                URL_IMG = ""
-                URL_IMG = intent.getStringExtra(URL_IMAGE)
+                else {
+                    setLog("----- >>")
+                    if (intent.getBooleanExtra(NOTCANCELLED,false)) {
+                        notcancell = true
+                    }
+                    if (intent.getStringExtra(PIN)!=null){
+                        pin = intent.getStringExtra(PIN)
+                    }
+                }
+
             }
-
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -152,15 +154,6 @@ class Pinlib : BaseActivity() {
 
                         }
 
-                        /*setLog("benar")
-                        var dataa = ""
-                        for (i in 0..(value.size-1)){
-                            dataa = dataa+value.get(i)
-                        }
-                        val returnIntent = Intent()
-                        returnIntent.putExtra("result", dataa)
-                        setResult(Activity.RESULT_OK, returnIntent)
-                        finish()*/
                     }
 
                 }
@@ -210,23 +203,19 @@ class Pinlib : BaseActivity() {
 
     private fun setInitRecycler() {
 
+        var otherNumber = arrayOf<String>("","0","10")
+
         for (i in 1..9){
             val modelNumber = modelNumber()
             modelNumber.number = "${i}"
             mutableList.add(modelNumber)
         }
 
-        val modelNumber1 = modelNumber()
-        modelNumber1.number = ""
-        mutableList.add(modelNumber1)
-
-        val modelNumber2 = modelNumber()
-        modelNumber2.number = "0"
-        mutableList.add(modelNumber2)
-
-        val modelNumber3 = modelNumber()
-        modelNumber3.number = "10"
-        mutableList.add(modelNumber3)
+        for (i in 0..(otherNumber.size-1)){
+            val modelNumber1 = modelNumber()
+            modelNumber1.number = otherNumber.get(i)
+            mutableList.add(modelNumber1)
+        }
 
         val mLayoutManager = GridLayoutManager(this, 3)
         recyclerView.layoutManager = mLayoutManager
@@ -287,14 +276,13 @@ class Pinlib : BaseActivity() {
         data = ""
     }
 
-    object pinValue{
+    object mData{
         var firs = true
         var data = ""
 
         var FIRST = "first"
-        var NOTFIRST = "notfirst"
         var NOTCANCELLED = "notcancell"
-        var PINSHOW = 11
+        var PINSHOW = 100
         var PIN = "PIN"
         var URL_IMAGE = ""
         var URL_IMG = ""

@@ -27,7 +27,7 @@ class AdapterRecycler(contextt: Context) : RecyclerView.Adapter<AdapterRecycler.
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-                .inflate(R.layout.recycler, parent, false)
+                .inflate(R.layout.adapter_recycler, parent, false)
 
         return MyViewHolder(itemView)
     }
@@ -50,11 +50,6 @@ class AdapterRecycler(contextt: Context) : RecyclerView.Adapter<AdapterRecycler.
         }
 
         holder.itemView.setOnClickListener {
-            /*if(holder.background.background == ContextCompat.getDrawable(context, R.drawable.layout_bg)){
-
-            }else{
-                holder.background.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.layout_bg))
-            }*/
 
             if(modelNumber.checked == true){
                 modelNumber.checked = false
