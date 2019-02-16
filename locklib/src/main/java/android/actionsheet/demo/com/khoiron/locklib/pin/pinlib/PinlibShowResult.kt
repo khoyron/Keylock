@@ -4,18 +4,18 @@ import android.actionsheet.demo.com.khoiron.locklib.pin.pinlib.Pinlib.mData.PINS
 import android.app.Activity
 import android.content.Intent
 
-class PinlibShowResult{
+class PinlibShowResult {
 
     var requestCode = 0
     var resultCode = 0
     var data: Intent
 //    val dataResult by lazy { PinlibShowResult(requestCode, resultCode, data) }
 
-    constructor(requestCode: Int, resultCode: Int, data: Intent?,callback: callback)  {
+    constructor(requestCode: Int, resultCode: Int, data: Intent?, callback: callback) {
         this.requestCode = requestCode
         this.resultCode = resultCode
         this.data = data!!
-        if (requestCode==PINSHOW){
+        if (requestCode == PINSHOW) {
             if (resultCode == Activity.RESULT_OK) {
                 callback.data(data!!)
             }
@@ -26,7 +26,7 @@ class PinlibShowResult{
 
     }*/
 
-    interface callback{
-        fun data(data:Intent)
+    interface callback {
+        fun data(data: Intent)
     }
 }

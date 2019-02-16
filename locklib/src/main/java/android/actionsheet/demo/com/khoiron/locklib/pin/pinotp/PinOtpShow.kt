@@ -6,10 +6,10 @@ import android.content.Intent
 
 class PinOtpShow {
 
-    lateinit var context :Context
+    lateinit var context: Context
     val pinlibShow by lazy { PinOtpShow(context) }
 
-    constructor(context: Context)  {
+    constructor(context: Context) {
         this.context = context
     }
 
@@ -43,10 +43,10 @@ class PinOtpShow {
         return pinlibShow
     }
 
-    fun showPinlib() {
+    fun showPinOtp() {
         var int = Intent()
         int.putExtra(PinOtp.mData.FIRST, mData.firs)
-        int.putExtra(PinOtp.mData.NOTCANCELLED,mData.cancelled)
+        int.putExtra(PinOtp.mData.NOTCANCELLED, mData.cancelled)
         int.putExtra(PinOtp.mData.NO_PHONE, mData.phone)
         int.putExtra(PinOtp.mData.CODE, mData.code)
         int.putExtra(PinOtp.mData.TITLE, mData.message)

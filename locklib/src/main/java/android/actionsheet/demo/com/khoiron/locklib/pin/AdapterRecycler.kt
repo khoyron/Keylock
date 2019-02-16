@@ -10,7 +10,6 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 
-
 /**
  * Created by khoiron on 23/07/18.
  */

@@ -7,10 +7,10 @@ import android.content.Intent
 
 class PinlibShow {
 
-    lateinit var context :Context
+    lateinit var context: Context
     val pinlibShow by lazy { PinlibShow(context) }
 
-    constructor(context: Context)  {
+    constructor(context: Context) {
         this.context = context
     }
 
@@ -34,20 +34,20 @@ class PinlibShow {
         return pinlibShow
     }
 
-    fun showPinlib(){
+    fun showPinlib() {
         var int = Intent(context, Pinlib::class.java)
-        int.putExtra(Pinlib.mData.FIRST,mData.type)
-        int.putExtra(Pinlib.mData.NOTCANCELLED,mData.cancelled)
-        int.putExtra(Pinlib.mData.PIN,mData.pin)
-        int.putExtra(Pinlib.mData.URL_IMAGE,mData.urlImage)
-        (context as Activity).startActivityForResult(int,PINSHOW)
+        int.putExtra(Pinlib.mData.FIRST, mData.type)
+        int.putExtra(Pinlib.mData.NOTCANCELLED, mData.cancelled)
+        int.putExtra(Pinlib.mData.PIN, mData.pin)
+        int.putExtra(Pinlib.mData.URL_IMAGE, mData.urlImage)
+        (context as Activity).startActivityForResult(int, PINSHOW)
     }
 
-    object mData{
+    object mData {
         var type = false
         var cancelled = false
-        var pin :String = ""
-        var urlImage :String = ""
+        var pin: String = ""
+        var urlImage: String = ""
     }
 
 }

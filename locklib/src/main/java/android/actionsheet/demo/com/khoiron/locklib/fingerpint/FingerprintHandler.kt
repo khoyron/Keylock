@@ -25,7 +25,7 @@ class FingerprintHandler : FingerprintManager.AuthenticationCallback {
     var boolean = false
 
     // Constructor
-    constructor(mContext: Context,boolean: Boolean){
+    constructor(mContext: Context, boolean: Boolean) {
         context = mContext
         this.boolean = boolean
     }
@@ -59,8 +59,8 @@ class FingerprintHandler : FingerprintManager.AuthenticationCallback {
     override fun onAuthenticationSucceeded(result: FingerprintManager.AuthenticationResult) {
         this.update("Fingerprint Authentication succeeded.", true)
         setDataPreferenceBolean(context, "lock", true)
-        if (boolean){
-            Toast.makeText(context,"Succes insert fingerprint",Toast.LENGTH_LONG).show()
+        if (boolean) {
+            Toast.makeText(context, "Succes insert fingerprint", Toast.LENGTH_LONG).show()
         }
         val returnIntent = Intent()
         (context as Activity).setResult(Activity.RESULT_OK, returnIntent)

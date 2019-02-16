@@ -12,12 +12,12 @@ class FingerprintShow{
     lateinit var context : Context
     val finger by lazy { FingerprintShow(context) }
 
-    fun fristFinger(frist:Boolean):FingerprintShow{
+    fun typeFirst(frist:Boolean):FingerprintShow{
         mData.first = frist
         return finger
     }
 
-    fun cancelledFinger(canceled:Boolean):FingerprintShow{
+    fun notCancelled(canceled:Boolean):FingerprintShow{
         mData.canceled = canceled
         return finger
     }
@@ -26,7 +26,7 @@ class FingerprintShow{
         this.context = context
     }
 
-    fun showPinlib(){
+    fun showFinger(){
         var intent = Intent(context, FingerPrintActivity::class.java)
         intent.putExtra(FIRST, mData.first)
         intent.putExtra(NOTCANCELLED,mData.canceled)

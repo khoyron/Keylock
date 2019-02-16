@@ -54,34 +54,25 @@ class FingerPrintActivity : BaseActivity() {
         textView = findViewById(R.id.errorText)
 
         try {
-            if (intent.getBooleanExtra(FIRST,false)!=null){
-                if (intent.getBooleanExtra(FIRST,false)) {
-                    if(intent.getBooleanExtra(NOTCANCELLED,false)){
+            if (intent.getBooleanExtra(FIRST, false) != null) {
+                if (intent.getBooleanExtra(FIRST, false)) {
+                    if (intent.getBooleanExtra(NOTCANCELLED, false)) {
                         notcancell = true
                         insert = true
                         tittle_finger.setText("Please Insert Finggerprint");
-                    }
-                    else{
+                    } else {
                         insert = true
                         tittle_finger.setText("Please Insert Finggerprint");
                     }
-                }
-                else{
-                    if (intent.getBooleanExtra(NOTCANCELLED,false)) {
+                } else {
+                    if (intent.getBooleanExtra(NOTCANCELLED, false)) {
                         notcancell = true
-                    }
-                    else{
+                    } else {
                         notcancell = false
                     }
                 }
             }
-            /*val first = intent.getStringExtra("first")
-            if (FIRST.equals(first)) {
-                insert = true
-                tittle_finger.setText("Please Insert Finggerprint");
-            }else if (NOTCANCELLED.equals(first)){
-                notcancell = true
-            }*/
+
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -196,14 +187,14 @@ class FingerPrintActivity : BaseActivity() {
 
     }
 
-    object contant{
+    object contant {
         var FIRST = "firs"
         var NOTCANCELLED = "cancel"
         var FINGER = 200
     }
 
     override fun onBackPressed() {
-        if(!notcancell){
+        if (!notcancell) {
             val returnIntent = Intent()
             setResult(Activity.RESULT_CANCELED, returnIntent)
             finish()
